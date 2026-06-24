@@ -1,7 +1,7 @@
 import axios from 'axios'
 // commands/groq.ts
 
-const llave = Deno.env.get("GROQ_TOKEN");
+//const llave = Deno.env.get("GROQ_TOKEN");
 
 export default async (ctx) => {
 
@@ -27,7 +27,7 @@ try {
 
   const config = {
     headers: {
-      'Authorization': 'Bearer ${llave}',
+      'Authorization': `Bearer ${llave}`,
       'Content-Type': 'application/json'
     }
   };
