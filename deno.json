@@ -1,5 +1,6 @@
 {
   "imports": {
+    "axios": "npm:axios@^1.18.1",
     "grammy": "npm:grammy@^1.44.0",
     "openai": "npm:openai@^6.44.0"
   },
