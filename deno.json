@@ -1,6 +1,7 @@
 {
   "imports": {
-    "grammy": "https://deno.land/x/grammy@v1.30.0/mod.ts"
+    "grammy": "npm:grammy@^1.44.0",
+    "openai": "npm:openai@^6.44.0"
   },
   "tasks": {
     "dev": "deno run --allow-net --allow-env main.ts"
