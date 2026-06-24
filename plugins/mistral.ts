@@ -38,7 +38,7 @@ try {
     { parse_mode: "Markdown" }
   );
   }catch (error) {
-    console.error("❌ Error al procesar /preguntar:", error);
+    console.error("❌ Error al procesar /mistral:", error);
     ctx.reply("⚠️ Hubo un error al procesar tu pregunta. Intenta más tarde.");
   }    
   
