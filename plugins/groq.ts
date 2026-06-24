@@ -1,8 +1,10 @@
 import axios from 'axios'
-// commands/mistral.js
+// commands/groq.ts
+
+const llave = Deno.env.get("GROQ_TOKEN");
+
 export default async (ctx) => {
-  
- 
+
     const userInput = ctx.message.text.replace("/groq", "").trim();
 
   // Si el usuario no escribió una pregunta después del comando
@@ -25,30 +27,28 @@ try {
 
   const config = {
     headers: {
-      'Authorization': 'Bearer ',
+      'Authorization': 'Bearer ${llave}',
       'Content-Type': 'application/json'
     }
   };
 
+	//Solicitud POST en Axios
     const respuesta = await axios.post(url, body, config);
     console.log('Respuesta:', respuesta);
-    //return respuesta.data;
 
-
-    //let res = await apii.json()
-
-    const aiResponse = respuesta.output[1].content[0].text;
+	//Para axios se guarda el json automaticamente en respuesta.data
+    const aiResponse = respuesta.data.output[1].content[0].text;
+    
+    //Se imprime resupuesta
     await ctx.reply(aiResponse,
     { parse_mode: "Markdown" }
   );
   }catch (error) {
-    console.error("❌ Error al procesar /preguntar:", error);
+    console.error("❌ Error al procesar /groq:", error);
     ctx.reply("⚠️ Hubo un error al procesar tu pregunta. Intenta más tarde.");
     console.error('Error:', error.response ? error.response.data : error.message);
     throw error;
-  }    
-  
+  }     
     
-  }
-
+}//Fin del plugin
 //export default handler;
