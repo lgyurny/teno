@@ -58,5 +58,3 @@ bot.on("message", (ctx) => ctx.reply("Got another message!"));
 // Now that you specified how to handle messages, you can start your bot.
 // This will connect to the Telegram servers and wait for messages.
 
-// Start the bot.
-bot.start();
