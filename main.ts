@@ -1,9 +1,6 @@
 import { bot } from './bot.ts';
 import { webhookCallback } from "grammy";
 
-// Start the bot.
-//bot.start();
-
 // Crea el handler HTTP nativo de Deno
 const handleUpdate = webhookCallback(bot, "std/http");
 
