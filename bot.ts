@@ -1,7 +1,9 @@
 import { Bot } from "grammy";
+import { InlineKeyboard, Keyboard } from "grammy";
+import registerCommands from "./plugins/index.ts";
 
 // Create an instance of the `Bot` class and pass your bot token to it.
-const bot = new Bot(Deno.env.get("BOT_TOKEN")!); // <-- put your bot token between the ""
+export const bot = new Bot(Deno.env.get("BOT_TOKEN")!); // <-- put your bot token between the ""
 // You can now register listeners on your bot object `bot`.
 // grammY will call the listeners when users send messages to your bot.
 

@@ -1,7 +1,5 @@
 import { bot } from './bot.ts';
 import { webhookCallback } from "grammy";
-import { InlineKeyboard, Keyboard } from "grammy";
-import registerCommands from "./plugins/index.ts";
 
 // Crea el handler HTTP nativo de Deno
 const handleUpdate = webhookCallback(bot, "std/http");
