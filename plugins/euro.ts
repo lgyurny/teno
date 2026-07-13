@@ -4,7 +4,7 @@ const llave = Deno.env.get("EURO_TOKEN");
 
 async function euro() {
   try {
-    let respuesta = await axios.get(`https://api.exchangeratesapi.io/v1/latest?access_key${llave}&symbols=USD,AUD,CAD,PLN,MXN&format=1`);
+    let respuesta = await axios.get(`https://api.exchangeratesapi.io/v1/latest?access_key=${llave}&symbols=USD,AUD,CAD,PLN,MXN&format=1`);
     console.log(respuesta); // Aquí están los datos devueltos por la API
      let res = await respuesta.data;
     return res.rates.MXN;
