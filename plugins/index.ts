@@ -5,6 +5,7 @@ import dolar from "./dolar.ts";
 import gemini from "./gemini.ts";
 import open from "./open.ts";
 import ias from "./ias.ts";
+import euro from "./euro.ts";
 
 export default function registerCommands(bot) {
   bot.command("local", local);
@@ -14,4 +15,5 @@ export default function registerCommands(bot) {
   bot.command("gemini", gemini);
   bot.command("open", open);
   bot.command("ias", ias);
+  bot.command("euro", euro);
 } 
