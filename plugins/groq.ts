@@ -20,7 +20,7 @@ try {
   const url = 'https://api.groq.com/openai/v1/responses';
 
   const body = {
-      model: 'qwen/qwen3-32b',
+      model: 'minimaxai/minimax-m2.7',
       instructions: "Eres un asistente que debe responder las preguntas del usuario y solo tienes 450 palabras para responder cada pregunta del usuario",
       input: `${userInput}`
   };
