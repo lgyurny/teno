@@ -5,7 +5,8 @@
     "@mistralai/mistralai": "npm:@mistralai/mistralai@^2.3.0",
     "axios": "npm:axios@^1.18.1",
     "grammy": "npm:grammy@^1.44.0",
-    "openai": "npm:openai@^6.44.0"
+    "openai": "npm:openai@^6.44.0",
+    "groq-sdk": "npm:groq-sdk@^1.6.0"
   },
   "tasks": {
     "dev": "deno run --allow-net --allow-env main.ts"

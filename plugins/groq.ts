@@ -1,7 +1,9 @@
-import axios from 'axios'
-// commands/groq.ts
-
+import Groq from 'groq-sdk';
 const llave = Deno.env.get("GROQ_TOKEN");
+const client = new Groq({
+	apiKey: llave
+});
+
 
 export default async (ctx) => {
 
@@ -17,27 +19,17 @@ export default async (ctx) => {
 try {
   await ctx.reply("💭 Procesando con Groq...");
 
-  const url = 'https://api.groq.com/openai/v1/responses';
-
-  const body = {
-      model: 'minimaxai/minimax-m2.7',
-      instructions: "Eres un asistente que debe responder las preguntas del usuario y solo tienes 450 palabras para responder cada pregunta del usuario",
-      input: `${userInput}`
-  };
-
-  const config = {
-    headers: {
-      'Authorization': `Bearer ${llave}`,
-      'Content-Type': 'application/json'
-    }
-  };
-
-	//Solicitud POST en Axios
-    const respuesta = await axios.post(url, body, config);
-    console.log('Respuesta:', respuesta);
-
+	const chatCompletion = await client.chat.completions.create({
+				messages: [{ role: 'user', content: userInput }],
+				model: 'groq/compound',
+			});
+	console.log(chatCompletion); // Aquí están los datos devueltos por la API
+    //model: 'openai/gpt-oss-20b',
+    
 	//Para axios se guarda el json automaticamente en respuesta.data
-    const aiResponse = respuesta.data.output[1].content[0].text;
+    const aiResponse = chatCompletion.choices[0].message.content;
+    console.log(chatCompletion.choices[0].message.content);  
+
     
     //Se imprime resupuesta
     await ctx.reply(aiResponse,
