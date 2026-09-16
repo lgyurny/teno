@@ -1,8 +1,8 @@
-import OpenAI from 'openai';
-//ESTE COMANDO FUE HECHO CON OPENAI
-// commands/llama.js
-const llave = Deno.env.get("ABLI_TOKEN");
+//import OpenAI from 'openai';
+import fetch from 'node-fetch';
 
+const llave = Deno.env.get("ABLI_TOKEN");
+/*
 const openai = new OpenAI({
   baseURL: 'https://api.abliteration.ai/v1',
   apiKey: `${llave}`
@@ -21,7 +21,7 @@ async function router(texto) {
   });
   console.log(completion.choices[0].message.content);
   return completion.choices[0].message.content;
-}
+}*/
 
 
 export default async (ctx) => {
@@ -38,8 +38,29 @@ export default async (ctx) => {
 try {
   await ctx.reply("💭 Procesando con Abliteration...");
 
-    const aiResponse = await router(userInput);
-    await ctx.reply(aiResponse);
+    //const aiResponse = await router(userInput);
+    const apii = await fetch('https://api.abliteration.ai/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                Authorization: `${llave}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                model: 'abliterated-model',
+                instructions: 'Eres un asistente que debe responder las preguntas del usuario y solo tienes 480 palabras para responder brevente cada pregunta del usuario.',
+                messages: [
+                {
+                    role: 'user',
+                    content: `${texto}`,
+                },
+                ],
+            }),
+          });//fin de fetch
+
+            let res = await apii.json()
+            const contenido = res.choices[0].message.content;
+
+      await ctx.reply(contenido);
   }catch (error) {
     console.error("❌ Error al procesar /abla:", error);
     ctx.reply("⚠️ Hubo un error al procesar tu pregunta. Intenta más tarde.");

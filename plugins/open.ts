@@ -26,12 +26,12 @@ async function router(texto) {
 
 export default async (ctx) => {
 
-    const userInput = ctx.message.text.replace("/le", "").trim();
+    const userInput = ctx.message.text.replace("/open", "").trim();
 
   // Si el usuario no escribió una pregunta después del comando
   if (!userInput) {
     return ctx.reply(
-      "❓ Por favor escribe tu pregunta después del comando.\n\nEjemplo:\n/le ¿Qué productos ofrecen?"
+      "❓ Por favor escribe tu pregunta después del comando.\n\nEjemplo:\n/open ¿Qué productos ofrecen?"
     );
   }
 
@@ -41,7 +41,7 @@ try {
     const aiResponse = await router(userInput);
     await ctx.reply(aiResponse);
   }catch (error) {
-    console.error("❌ Error al procesar /le:", error);
+    console.error("❌ Error al procesar /open:", error);
     ctx.reply("⚠️ Hubo un error al procesar tu pregunta. Intenta más tarde.");
   }
 }

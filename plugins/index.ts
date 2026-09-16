@@ -6,7 +6,7 @@ import gemini from "./gemini.ts";
 import open from "./open.ts";
 import ias from "./ias.ts";
 import euro from "./euro.ts";
-//import abla from "./abla.ts";
+import abla from "./abla.ts";
 
 export default function registerCommands(bot) {
   bot.command("local", local);
@@ -17,5 +17,5 @@ export default function registerCommands(bot) {
   bot.command("open", open);
   bot.command("ias", ias);
   bot.command("euro", euro);
-  //bot.command("abla", abla);
+  bot.command("abla", abla);
 } 
