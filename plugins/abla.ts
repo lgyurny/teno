@@ -1,5 +1,5 @@
 //import OpenAI from 'openai';
-import fetch from 'node-fetch';
+import axios from 'axios'
 
 const llave = Deno.env.get("ABLI_TOKEN");
 /*
@@ -38,27 +38,23 @@ export default async (ctx) => {
 try {
   await ctx.reply("💭 Procesando con Abliteration...");
 
-    //const aiResponse = await router(userInput);
-    const apii = await fetch('https://api.abliteration.ai/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                Authorization: `${llave}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                model: 'abliterated-model',
-                instructions: 'Eres un asistente que debe responder las preguntas del usuario y solo tienes 480 palabras para responder brevente cada pregunta del usuario.',
-                messages: [
-                {
-                    role: 'user',
-                    content: `${texto}`,
-                },
-                ],
-            }),
-          });//fin de fetch
+      const res = await axios.post(
+      "https://api.abliteration.ai/v1/chat/completions",
+      {
+        model: "abliterated-model",
+        instructions: 'Eres un asistente que debe responder las preguntas del usuario y solo tienes 480 palabras para responder brevente cada pregunta del usuario.',
+        messages: [{ role: "user", content: `${userInput}` }],
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${llave}`,
+        },
+      }
+    );
+       console.log(res); // Aquí están los datos devueltos por la API
 
-            let res = await apii.json()
-            const contenido = res.choices[0].message.content;
+            let resultado = await res.json()
+            const contenido = resultado.choices[0].message.content;
 
       await ctx.reply(contenido);
   }catch (error) {
