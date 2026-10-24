@@ -8,6 +8,7 @@ import open from "./open.ts";
 import ias from "./ias.ts";
 import euro from "./euro.ts";
 import zai from "./zai.ts";
+import z2 from "./z2.ts";
 
 export default function registerCommands(bot) {
   //bot.command("abla", abla);
@@ -20,4 +21,5 @@ export default function registerCommands(bot) {
   bot.command("ias", ias);
   bot.command("euro", euro);
   bot.command("zai", zai);
+  bot.command("z2", z2);
 } 

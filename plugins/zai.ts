@@ -42,6 +42,6 @@ try {
     await ctx.reply(aiResponse);
   }catch (error) {
     console.error("❌ Error al procesar /zai:", error);
-    ctx.reply("⚠️ Hubo un error al procesar tu pregunta. Intenta más tarde.");
+    ctx.reply("⚠️ Hubo un error al procesar tu pregunta. Intenta con /z2.");
   }
 }
