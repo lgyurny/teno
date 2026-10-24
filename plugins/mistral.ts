@@ -7,7 +7,7 @@ const client = new Mistral({apiKey: apiKey});
 
 async function miss(texto) {
     const response = await client.chat.complete({
-        model: "mistral-medium-latest",
+        model: "ministral-14b-latest",
         messages: [
           {role: 'system', content: 'Eres un asistente que debe responder las preguntas del usuario y solo tienes 480 palabras para responder brevente cada pregunta del usuario.'},
           {role: 'user', content: `${texto}`}
