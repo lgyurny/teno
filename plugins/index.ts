@@ -1,3 +1,4 @@
+//import abla from "./abla.ts";
 import local from "./local.ts";
 import mistral from "./mistral.ts";
 //import groq from "./groq.ts";
@@ -6,9 +7,10 @@ import gemini from "./gemini.ts";
 import open from "./open.ts";
 import ias from "./ias.ts";
 import euro from "./euro.ts";
-//import abla from "./abla.ts";
+import zai from "./zai.ts";
 
 export default function registerCommands(bot) {
+  //bot.command("abla", abla);
   bot.command("local", local);
   bot.command("mistral", mistral);
   //bot.command("groq", groq);
@@ -17,5 +19,5 @@ export default function registerCommands(bot) {
   bot.command("open", open);
   bot.command("ias", ias);
   bot.command("euro", euro);
-  //bot.command("abla", abla);
+  bot.command("zai", zai);
 } 
